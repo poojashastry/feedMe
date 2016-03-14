@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Register</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="home">
+	<div class="container">
+		<div class="page-header">
+  			<h1 class="appName">Feed Me <br> <small class="subtext">Your customizable RSS Reader.</small></h1>
+		</div>
+		<div class="row registerModule">
+		<div class="error">
+			{{#if message}}
+			<div class="alert alert-danger" role="alert">
+  					<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+  					<span class="sr-only">Error:</span>
+  					{{message}}
+			</div>
+			{{/if}}
+		</div>
+		
+			<div class="col-md-4 col-md-offset-4">
+				<div class="panel panel-primary">
+					<div class="panel-heading">Register</div>
+						<div class="panel-body">
+							<form class="form-horizontal" method="post" action="/registerUser" role="form" class="form-submit">
+								<div class="form-group">
+									<label for="username" class="col-sm-3 control-label">Username</label>
+									<div class="col-sm-9">
+										<div class="input-group">
+											<span class="input-group-addon glyphicon glyphicon-user"></span>
+											<input type="text" class="form-control" id="username" name="username" placeholder="Username">
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="password" class="col-sm-3 control-label">Password</label>
+									<div class="col-sm-9">
+										<div class="input-group">
+										<span class="input-group-addon glyphicon glyphicon-lock"></span>
+											<input type="password" name="password" class="form-control" id="password" placeholder="Password">
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="confirmpassword" class="col-sm-3 control-label">Confirm Password</label>
+									<div class="col-sm-9">
+										<div class="input-group">
+										<span class="input-group-addon glyphicon glyphicon-lock"></span>
+											<input type="password" name="confirmpassword" class="form-control" id="confirmpassword" placeholder="Retype Password">
+										</div>
+									</div>
+								</div>
+								<br>
+								<br>
+								<div class="form-group last">
+									<div class="col-sm-offset-3 col-sm-9">
+										<button type="submit" class="btn btn-primary register">Register!</button>
+									</div>
+								</div>
+							</form>
+						</div>
+				</div>
+			</div>
+			</div>
+		</div>
+</body>
+</html>

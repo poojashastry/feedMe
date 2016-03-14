@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>My Feed</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+		    $(document).on('click', '.btn-add', function(e) {
+		        e.preventDefault();
+		        var controlForm = $('.controls form:first');
+		        var currentEntry = $(this).parents('.entry:first');
+		        var newEntry = currentEntry.clone();
+		        controlForm.prepend(newEntry);
+		        
+		        newEntry.find('input').val('');
+		        controlForm.find('.entry:not(:last) .btn-add')
+		            .removeClass('btn-add').addClass('btn-remove')
+		            .removeClass('btn-success').addClass('btn-danger')
+		            .html('<span class="glyphicon glyphicon-minus"></span>');
+		    })
+		    .on('click', '.btn-remove', function(e) {
+				$(this).parents('.entry:first').remove();
+				e.preventDefault();
+				return false;
+			});
+		});
+	</script>
+</head>
+<body>
+<div class="container">
+	<div class="row">
+		<div class="control-group" id="rssurls"></div>
+		<label class="control-label" for="rssUrl">Add URLs</label>
+		<div class="controls">
+			<form action="/saveFeeds" method="POST" role="form">
+				 <div class="entry input-group col-sm-3">
+				 	<input type="text" class="form-control" name="urls[]" placeholder="Add feed">
+				 	<span class="input-group-btn">
+                        <button class="btn btn-success btn-add" type="button">
+                            <span class="glyphicon glyphicon-plus"></span>
+                        </button>
+                    </span>
+				 </div>
+				 <br>
+				 <br>
+				 <button type="submit" class="btn btn-primary">Submit</button>
+			</form>
+			<br>
+			<small>Click <span class="glyphicon glyphicon-plus gs"></span> to add another URL</small>
+		</div>
+	</div>
+</div>
+</div>
+</body>
+</html>

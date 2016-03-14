@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+	<script type="text/javascript">
+    	var dojoConfig = {
+        async: true,
+        packages: [
+            {
+                name: "app",
+                location: "http://localhost:3000/scripts/"
+            }
+        ]
+    };
+	</script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/dojo/1.10.4/dojo/dojo.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/simple-sidebar.css"/>
+	<link rel="stylesheet" href="css/style.css">
+	<script src="scripts/app.js"></script>
+	<script type="text/javascript">
+		$(function(){
+		    $(document).on('click', '.btn-add', function(e)
+		    {
+		        e.preventDefault();
+
+		        var controlForm = $('.controls .addFeeds:first');
+		        var currentEntry = $(this).parents('.entry:first');
+		        var newEntry = currentEntry.clone();
+		        controlForm.prepend(newEntry);
+		        
+		        newEntry.find('input').val('');
+		        controlForm.find('.entry:not(:last) .btn-add')
+		            .removeClass('btn-add').addClass('btn-remove')
+		            .removeClass('btn-success').addClass('btn-danger')
+		            .html('<span class="glyphicon glyphicon-minus"></span>');
+		    }).on('click', '.btn-remove', function(e)
+		    {
+				$(this).parents('.entry:first').remove();
+
+				e.preventDefault();
+				return false;
+			});
+		});
+	</script>
+	<title>View My Feeds</title>
+</head>
+<body>
+	<div id="wrapper">
+		<div id="sidebar-wrapper">
+			
+	        <ul class="sidebar-nav">
+	            <li class="sidebar-brand">
+	            	Feed Me
+
+	            </li>
+	            <li>
+	            	<a href="/logout">
+					Logout
+					</a>
+	            </li>
+	            <li>
+	                <a href="#">My Feeds</a>
+	                <ul id="feeds">
+	                	
+	                </ul>
+	            </li>
+	        </ul>
+	        <div class="container">
+				<div class="feedEntry">
+					<div class="control-group" id="rssurls"></div>
+					<label class="control-label urlabel" for="rssUrl">Add URLs</label>
+					<div class="controls">
+						<div class="addFeeds">
+							<!--<form action="/saveFeeds" method="POST" role="form">-->
+								 <div class="entry input-group col-xs-2">
+								 	<input type="text" class="form-control" name="urls[]" id="urls" placeholder="Add feed">
+								 	<span class="input-group-btn">
+				                        <button class="btn btn-success btn-add" type="button">
+				                            <span class="glyphicon glyphicon-plus"></span>
+				                        </button>
+				                    </span>
+								 </div>
+								 <br>
+								 <br>
+								 <button class="btn btn-primary submit-urls" id="submit-urls">Submit</button>
+							<!--</form>-->
+							<br>
+							<small>Click <span class="glyphicon glyphicon-plus gs"></span> to add another URL</small>
+						</div>
+					</div>
+				</div>
+			</div>
+	    </div>
+	    <div id="page-content-wrapper">
+			<div id="container">
+				<div id="content"></div>
+				<button type="button" class="btn btn-primary more" id="more">Get more feeds!</button>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,20 @@
+{
+  "name": "rss",
+  "version": "1.0.0",
+  "description": "a rss reader for noobs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Pooja Shastry",
+  "license": "ISC",
+  "dependencies" : {
+  	"express": "*",
+  	"mongojs" : "*",
+  	"express-handlebars" : "*",
+  	"body-parser" : "*",
+  	"cookie-parser" : "*",
+    "bcrypt-nodejs": "*",
+    "crypto" : "*"
+  }
+}

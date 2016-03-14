@@ -1,0 +1,76 @@
+img {
+	float: left;
+	width: 30%;
+	height: 40%;
+	margin-right: 15px;
+}
+
+.login {
+	margin: auto 0;
+	width: inherit;
+}
+
+.loginModule {
+	margin-top: 10%;
+}
+
+.registerModule {
+	margin-top: 10%;
+}
+
+.register {
+	margin: auto 0;
+	width: inherit;
+}
+
+.paragraphs {
+	margin: 20px;
+}
+
+.paragraphs:hover {
+	cursor: pointer;
+}
+
+.subtext {
+	font-style: normal;
+	color: black;
+	font-size: 40%;
+}
+
+#container{
+	width: 70%;
+	margin: auto;
+	background-color: #E0ffff;
+}
+
+#content{
+	
+}
+
+h3 {
+	margin-top: 0px;
+	color:#357Ec7;
+}
+
+.more {
+	width: 100%;
+}
+
+small{
+	font-style: italic;
+	color: darkblue;
+}
+
+.custom-heading {
+	text-align: center;
+}
+
+.home{
+	background-image: url("../img/home.jpg");
+}
+
+.appName{
+	text-align: center;
+	font-family: "Verdana";
+	color: #FFF;
+}
