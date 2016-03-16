@@ -23,31 +23,6 @@
 	<link rel="stylesheet" type="text/css" href="css/simple-sidebar.css"/>
 	<link rel="stylesheet" href="css/style.css">
 	<script src="scripts/app.js"></script>
-	<script type="text/javascript">
-		$(function(){
-		    $(document).on('click', '.btn-add', function(e)
-		    {
-		        e.preventDefault();
-
-		        var controlForm = $('.controls .addFeeds:first');
-		        var currentEntry = $(this).parents('.entry:first');
-		        var newEntry = currentEntry.clone();
-		        controlForm.prepend(newEntry);
-		        
-		        newEntry.find('input').val('');
-		        controlForm.find('.entry:not(:last) .btn-add')
-		            .removeClass('btn-add').addClass('btn-remove')
-		            .removeClass('btn-success').addClass('btn-danger')
-		            .html('<span class="glyphicon glyphicon-minus"></span>');
-		    }).on('click', '.btn-remove', function(e)
-		    {
-				$(this).parents('.entry:first').remove();
-
-				e.preventDefault();
-				return false;
-			});
-		});
-	</script>
 	<title>View My Feeds</title>
 </head>
 <body>
@@ -77,19 +52,16 @@
 					<label class="control-label urlabel" for="rssUrl">Add URLs</label>
 					<div class="controls">
 						<div class="addFeeds">
-							<!--<form action="/saveFeeds" method="POST" role="form">-->
 								 <div class="entry input-group col-xs-2">
 								 	<input type="text" class="form-control" name="urls[]" id="urls" placeholder="Add feed">
 								 	<span class="input-group-btn">
-				                        <button class="btn btn-success btn-add" type="button">
+				                        <button class="btn btn-success btn-add" id="submit-urls" type="button">
 				                            <span class="glyphicon glyphicon-plus"></span>
 				                        </button>
 				                    </span>
 								 </div>
 								 <br>
 								 <br>
-								 <button class="btn btn-primary submit-urls" id="submit-urls">Submit</button>
-							<!--</form>-->
 							<br>
 							<small>Click <span class="glyphicon glyphicon-plus gs"></span> to add another URL</small>
 						</div>

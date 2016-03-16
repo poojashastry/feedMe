@@ -38,16 +38,22 @@ define([
                 handleAs: "json"
             })
             .then(function(data){
-                if(data.dbFeeds.feeds.length == 0){
-                    var alert = domConstruct.create("div", { 
-                        class:"alert alert-info",
-                        role:"alert", 
-                        innerHTML:data.message, 
-                        style:"text-align:center"
-                    });
-                    var location = dom.byId("page-content-wrapper");
+                if(data.dbFeeds.feeds.length == 0) {
+                    var noFeedAlert = dom.byId("no-feeds");
+                    console.log(noFeedAlert);
+                    console.log("hi");
+                    if(noFeedAlert === null) {
+                        var alert = domConstruct.create("div", { 
+                            id:"no-feeds",
+                            class:"alert alert-info",
+                            role:"alert", 
+                            innerHTML:data.message, 
+                            style:"text-align:center"
+                        });
+                        var location = dom.byId("page-content-wrapper");
 
-                    domConstruct.place(alert,location,"first");
+                        domConstruct.place(alert,location,"first");
+                    }
                 }
                 window.srcCount = data.dbFeeds.feeds.length;
                 window.result = [];
@@ -58,6 +64,10 @@ define([
                     "callback" : function() {
                         var _appHelpers = require("app/_appHelpers");
                         for(var i in data.dbFeeds.feeds) {
+                            var noFeeds = dom.byId("no-feeds");
+                            if(noFeeds != null) {
+                                domConstruct.destroy("no-feeds");
+                            }
                             console.log(data.dbFeeds.feeds[i]);
                             console.log(i);
                             var feed = new google.feeds.Feed(data.dbFeeds.feeds[i]);
