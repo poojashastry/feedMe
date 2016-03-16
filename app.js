@@ -15,6 +15,7 @@ app.set('view engine', '.hbs');
  * App Homepage
  */
 app.get('/', function (req, res) {
+	res.header("X-Frame-Options", "ALLOW-FROM http://feed-me.xyz");
 	lib.feedMe.myFeed(req, res);
 });
 
@@ -22,6 +23,7 @@ app.get('/', function (req, res) {
  * Register a new user
  */
 app.get('/register', function(req, res) {
+	res.header("X-Frame-Options", "ALLOW-FROM http://feed-me.xyz");
 	res.render('register');
 });
 
@@ -29,6 +31,7 @@ app.get('/register', function(req, res) {
  * Login a user
  */
 app.get('/login', function(req,res) {
+	res.header("X-Frame-Options", "ALLOW-FROM http://feed-me.xyz");
 	lib.feedMe.login(req,res);
 });
 
@@ -36,6 +39,7 @@ app.get('/login', function(req,res) {
  * Display a user's feeds
  */
 app.get('/myfeed',function(req,res) {
+	res.header("X-Frame-Options", "ALLOW-FROM http://feed-me.xyz");
 	lib.feedMe.myFeed(req, res);
 });
 
@@ -43,6 +47,7 @@ app.get('/myfeed',function(req,res) {
  * Delete Feed on button click
  */
 app.post('/deleteFeed',function(req,res) {
+	res.header("X-Frame-Options", "ALLOW-FROM http://feed-me.xyz");
 	lib.feedMe.deleteFeed(req, res);
 });
 
@@ -50,6 +55,7 @@ app.post('/deleteFeed',function(req,res) {
  * Log a user out. Destroys cookies.
  */
 app.get('/logout',function(req,res) {
+	res.header("X-Frame-Options", "ALLOW-FROM http://feed-me.xyz");
 	lib.feedMe.logout(req, res);
 });
 
@@ -57,6 +63,7 @@ app.get('/logout',function(req,res) {
  * Fetch feeds from DB.
  */
 app.get('/getFeeds',function(req,res) {
+	res.header("X-Frame-Options", "ALLOW-FROM http://feed-me.xyz");
 	lib.feedMe.getFeeds(req, res);
 });
 
@@ -65,6 +72,7 @@ app.get('/getFeeds',function(req,res) {
  */
 app.post('/saveFeeds',function(req,res) {
 	console.log(req.body);
+	res.header("X-Frame-Options", "ALLOW-FROM http://feed-me.xyz");	
 	lib.feedMe.saveFeeds(req, res);
 });
 
@@ -72,6 +80,7 @@ app.post('/saveFeeds',function(req,res) {
  * Authenticate user credentials.
  */
 app.post('/loginUser',function(req,res) {
+	res.header("X-Frame-Options", "ALLOW-FROM http://feed-me.xyz");	
 	lib.feedMe.loginUser(req, res);
 });
 
@@ -79,6 +88,7 @@ app.post('/loginUser',function(req,res) {
  * Add new user to DB.
  */
 app.post('/registerUser', function(req,res){
+	res.header("X-Frame-Options", "ALLOW-FROM http://feed-me.xyz");	
 	lib.feedMe.registerUser(req, res);
 });
 
